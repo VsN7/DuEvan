@@ -1,0 +1,46 @@
+
+/* TELA DE FUNDO */
+.fundo{
+    background: url('https://i.ytimg.com/vi/hPgv5oYP2ro/maxresdefault.jpg') no-repeat center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+}
+
+/* NAVEGADORES */
+
+nav{
+    background-color: rgba(14, 2, 2, 0.829);
+}
+.dropdown-item,.dropdown-menu{
+    background-color: rgba(197, 167, 161);   
+}
+.dropdown-menu{
+    margin:0;
+    border: 0;
+    border-radius: 0;
+}
+.fixed-top{
+    padding: 0;
+}
+
+.navbar-expand-md .navbar-nav .nav-link {
+    padding: 1rem 2.5rem;
+}
+
+.navbar-expand-md .navbar-nav .nav-link:hover{
+    background-color:  white;
+    color: black;
+}
+
+/* FOOTER */
+.version{
+    color: white;
+    font-size: 85%;
+    position:fixed;
+    bottom: 0;
+    width: 99.2%;
+    display: flex; 
+    align-items: flex-end;
+    justify-content: flex-end;
+}
