@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DuEvan</title>
+  <link rel="stylesheet" th:href="@{/Bootstrap/bootstrap/compiler/bootstrap.css}"/>
+  <link rel="stylesheet" th:href="@{/CSS/style.css}"/>
+  <link rel="shortcut icon" th:href="@{/Imagens/VSN.png}" />
+  
+  <script th:src="@{/Bootstrap/jquery/dist/jquery.js}"></script>
+  <script th:src="@{/Bootstrap/bootstrap/dist/js/bootstrap.js}"></script>
+  <script th:src="@{/JS/script.js}"></script>
+</head>
+
+<body class="fundo">
+  <div class="sobrepoe">
+
+  </div>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li id="arquivoDropDown" class="nav-item dropdown focusNavBar">
+            <a id="arquivo" class="nav-link" href="" data-toggle="dropdown">Arquivo</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" data-toggle="collapse" href="#cadEmpresa">Empresa</a>
+                <a class="dropdown-item" data-toggle="collapse"  href="#cadUsuario">Usuário</a>
+                <a class="dropdown-item" data-toggle="collapse" href="#cadCliente">Cliente</a>
+                <a class="dropdown-item" data-toggle="collapse" href="#cadFornecedor">Fornecedor</a>
+                <a class="dropdown-item" data-toggle="collapse" href="#cadServico">Serviço</a>
+                <a class="dropdown-item" data-toggle="collapse" href="#cadOrcamento">Orçamento</a>
+                <a class="dropdown-item" data-toggle="collapse" href="#cadOS">Ordem de Serviço</a>
+              </div>
+          </li>
+          <li id="clienteDropDown" class="nav-item dropdown focusNavBar" >
+            <a id="cliente" href="" data-toggle="dropdown" class="nav-link">Cliente</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                <a class="dropdown-item" data-toggle="collapse" href="#cadCliente">Cadastro de Clientes</a>
+                
+              </div>
+          </li>
+           <li id="servicoDropDown" class="nav-item dropdown focusNavBar" >
+            <a id="servico"  href="" data-toggle="dropdown" class="nav-link">Serviço</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                <a class="dropdown-item" data-toggle="collapse" href="#cadServico">Cadastro de Serviços</a>
+                
+              </div>
+          </li>
+           <li id="orcamentoDropDown" class="nav-item dropdown focusNavBar" >
+            <a id="orcamento" href="" data-toggle="dropdown" class="nav-link">Orçamento</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                <a class="dropdown-item" data-toggle="collapse" href="#cadOrcamento">Cadastro de Orçamentos</a>
+                
+              </div>
+          </li>
+           <li id="osDropDown" class="nav-item dropdown focusNavBar" >
+            <a id="os"  href="" data-toggle="dropdown" class="nav-link">O.S</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                <a class="dropdown-item" data-toggle="collapse" href="#cadOS">Cadastro de O.S</a>
+                
+              </div>
+          </li>
+          <li id="fornecedoresDropDown" class="nav-item dropdown focusNavBar" >
+            <a id="fornecedores"  href="" data-toggle="dropdown" class="nav-link">Fornecedor</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                <a class="dropdown-item" data-toggle="collapse" href="#cadFornecedor">Cadastro de Fornecedores</a>
+                
+              </div>
+          </li>
+          <li id="relatoriosDropDown" class="nav-item dropdown focusNavBar" >
+            <a id="relatorios" href="" data-toggle="dropdown" class="nav-link">Relatórios</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                <a class="dropdown-item" data-toggle="collapse" href="#">Relatório de O.S Por Data</a>
+                
+              </div>
+          </li>
+          <li id="estoqueDropDown" class="nav-item dropdown focusNavBar" >
+            <a id="estoque" href="" data-toggle="dropdown" class="nav-link">Estoque</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                <a class="dropdown-item" data-toggle="collapse" href="#">Cadastro de Produto em Estoque</a>
+                
+              </div>
+          </li>
+          <li id="contasDropDown" class="nav-item dropdown focusNavBar" >
+            <a id="contas" href="" data-toggle="dropdown" class="nav-link">Contas</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                <a class="dropdown-item" data-toggle="collapse" href="#">Contas à Paga</a>
+                <a class="dropdown-item" data-toggle="collapse" href="#">Contas à Receber</a>
+                
+              </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+
+
+  <!-- Cadastro Empresa -->
+
+
+
+    <div  class="collapse multi-collapse tamanhoOptEmpresa tamanhoOpt" id="cadEmpresa">
+      <div class="ajusteOpt">
+        <form class="formEmpresa">
+            <div class="cabecalio" draggable="true">
+              <span class="tituloPage">Cadastro de Empresa</span>
+              <input type="button" class="fechar" id="fecharEmpresa" value="X"/>
+            </div>
+          <div class="formAll">
+            <div class="form-row">
+              <div class="form-group col-md-1">
+                <label for="inputId">ID</label>
+                <input type="text" class="form-control" id="inputId" placeholder="ID">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputRazaoSocial">Razão Social</label>
+                <input type="text" class="form-control" id="inputRazaoSocial" placeholder="Razão Social">
+              </div>
+              <div class="form-group col-md-5">
+                <label for="inputNomeFantasia">Nome Fantasia</label>
+                <input type="text" class="form-control" id="inputNomeFantasia" placeholder="Nome Fantasia">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="cnpj">CNPJ/CPF</label>
+                <input type="text" class="form-control" id="cnpj" placeholder="CNPJ ou CPF">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inscricaoEstadual">Inscrição Estadual</label>
+                <input type="text" class="form-control" id="inscricaoEstadual" placeholder="Inscrição Estadual">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="contribuinteIcms">Contribuinte ICMS</label>
+                <select id="contribuinteIcms" class="form-control">
+                  <option selected>Selecione</option>
+                  <option>Isento</option>
+                  <option>Não</option>
+                  <option>Sim</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <label for="longradouro">Longradouro</label>
+                <input type="text" class="form-control" id="longradouro" placeholder="Endereço">
+              </div>
+              <div class="form-group col-md-2">
+                <label for="numero">Numero</label>
+                <input type="text" class="form-control" id="numero" placeholder="Numero">
+              </div>
+              <div class="form-group col-md-5">
+                <label for="bairro">Bairro</label>
+                <input type="text" class="form-control" id="bairro" placeholder="Bairro">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <label for="cidade">Cidade</label>
+                <input type="text" class="form-control" id="cidade" placeholder="Cidade">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="estado">Estado</label>
+                <select id="estado" class="form-control">
+                  <option selected>Selecione</option>
+                  <option>Acre - AC</option>
+                  <option>Alagoas - AL</option>
+                  <option>Amapá - AP</option>
+                  <option>Amazonas - AM</option>
+                  <option>Bahia - BA</option>
+                  <option>Ceará - CE</option>
+                  <option>Distrito Federal - DF</option>
+                  <option>Espírito Santo - ES</option>
+                  <option>Goiás - GO</option>
+                  <option>Maranhão - MA</option>
+                  <option>Mato Grosso - MT</option>
+                  <option>Mato Grosso do Sul - MS</option>
+                  <option>Minas Gerais - MG</option>
+                  <option>Pará - PA</option>
+                  <option>Paraíba - PB</option>
+                  <option>Paraná - PR</option>
+                  <option>Pernambuco - PE</option>
+                  <option>Piauí - PI</option>
+                  <option>Rio de Janeiro - RJ</option>
+                  <option>Rio Grande do Norte - RN</option>
+                  <option>Rio Grande do Sul - RS</option>
+                  <option>Rondônia - RO</option>
+                  <option>Roraima - RR</option>
+                  <option>Piauí - PI</option>
+                  <option>Santa Catarina - SC</option>
+                  <option>São Paulo - SP</option>
+                  <option>Sergipe - SE</option>
+                  <option>Tocantins - TO</option>
+                </select>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="cep">CEP</label>
+                <input type="text" class="form-control" id="cep" placeholder="CEP">
+              </div>
+            </div>
+            <div class="seletores"> 
+              <input type="button"  class="btn btn-primary seletor" value="|<"/>
+              <input type="button"  class="btn btn-primary seletor" value="<<"/>
+              <input type="button"  class="btn btn-primary seletor" value=">>"/>
+              <input type="button"  class="btn btn-primary seletor" value=">|"/>
+            </div> 
+            <div class="imprimir">
+              <input type="button" class="btn btn-primary impr" value="Imprimir" />
+            </div>
+            <div class="botoes">
+              <input type="button" class="btn opcao " value="Excluir" disabled/>
+              <input type="button" class="btn btn-primary opcao" value="Editar"/>
+              <input type="button" class="btn btn-primary opcao" value="Selecionar"/>
+              <input type="button" class="btn btn-primary opcao" value="Novo"/>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+
+<!-- Cadastro Fornecedor -->
+
+
+
+    <div  class="collapse multi-collapse tamanhoOptFornecedor tamanhoOpt" id="cadFornecedor">
+      <div class="ajusteOpt">
+        <form class="formFornecedor">
+            <div class="cabecalio" draggable="true">
+              <span class="tituloPage">Cadastro de Fornecedores</span>
+              <input type="button" class="fechar" id="fecharFornecedor" value="X">
+            </div>
+          <div class="formAll">
+            <div class="form-row">
+              <div class="form-group col-md-1">
+                <label for="inputIdFornecendor">ID</label>
+                <input type="text" class="form-control" id="inputIdFornecendor" placeholder="ID">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputRazaoSocialFornecedor">Razão Social</label>
+                <input type="text" class="form-control" id="inputRazaoSocialFornecedor" placeholder="Razão Social">
+              </div>
+              <div class="form-group col-md-5">
+                <label for="inputNomeFantasiaFornecedor">Nome Fantasia</label>
+                <input type="text" class="form-control" id="inputNomeFantasiaFornecedor" placeholder="Nome Fantasia">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="inputCnpjFornecedor">CNPJ/CPF</label>
+                <input type="text" class="form-control" id="inputCnpjFornecedor" placeholder="CNPJ ou CPF">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputInscricaoEstadualFornecedor">Inscrição Estadual</label>
+                <input type="text" class="form-control" id="inputInscricaoEstadualFornecedor" placeholder="Inscrição Estadual">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputContribuinteIcmsFornecedor">Contribuinte ICMS</label>
+                <select id="inputContribuinteIcmsFornecedor" class="form-control">
+                  <option selected>Selecione</option>
+                  <option>Isento</option>
+                  <option>Não</option>
+                  <option>Sim</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <label for="inputLongradouroFornecedor">Longradouro</label>
+                <input type="text" class="form-control" id="inputLongradouroFornecedor" placeholder="Endereço">
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputNumeroFornecedor">Numero</label>
+                <input type="text" class="form-control" id="inputNumeroFornecedor" placeholder="Numero">
+              </div>
+              <div class="form-group col-md-5">
+                <label for="inputBairroFornecedor">Bairro</label>
+                <input type="text" class="form-control" id="inputBairroFornecedor" placeholder="Bairro">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <label for="inputCidadeFornecedor">Cidade</label>
+                <input type="text" class="form-control" id="inputCidadeFornecedor" placeholder="Cidade">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputEstadoFornecedor">Estado</label>
+                <select id="inputEstadoFornecedor" class="form-control">
+                  <option selected>Selecione</option>
+                  <option>Acre - AC</option>
+                  <option>Alagoas - AL</option>
+                  <option>Amapá - AP</option>
+                  <option>Amazonas - AM</option>
+                  <option>Bahia - BA</option>
+                  <option>Ceará - CE</option>
+                  <option>Distrito Federal - DF</option>
+                  <option>Espírito Santo - ES</option>
+                  <option>Goiás - GO</option>
+                  <option>Maranhão - MA</option>
+                  <option>Mato Grosso - MT</option>
+                  <option>Mato Grosso do Sul - MS</option>
+                  <option>Minas Gerais - MG</option>
+                  <option>Pará - PA</option>
+                  <option>Paraíba - PB</option>
+                  <option>Paraná - PR</option>
+                  <option>Pernambuco - PE</option>
+                  <option>Piauí - PI</option>
+                  <option>Rio de Janeiro - RJ</option>
+                  <option>Rio Grande do Norte - RN</option>
+                  <option>Rio Grande do Sul - RS</option>
+                  <option>Rondônia - RO</option>
+                  <option>Roraima - RR</option>
+                  <option>Piauí - PI</option>
+                  <option>Santa Catarina - SC</option>
+                  <option>São Paulo - SP</option>
+                  <option>Sergipe - SE</option>
+                  <option>Tocantins - TO</option>
+                </select>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="inputCepFornecedor">CEP</label>
+                <input type="text" class="form-control" id="inputCepFornecedor" placeholder="CEP">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="inputTelefoneFornecedor">Telefone</label>
+                <input type="text" class="form-control" id="inputTelefoneFornecedor" placeholder="Telefone">
+              </div>
+              <div class="form-group col-md-5">
+                <label for="inputEmailFornecedor">E-mail</label>
+                <input type="email" class="form-control" id="inputEmailFornecedor" placeholder="E-mail">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="inputSituacaoFornecedor">Situação</label>
+                <input type="text" class="form-control" id="inputSituacaoFornecedor" placeholder="Situação">
+              </div>
+            </div>
+            <div class="seletores"> 
+              <input type="button"  class="btn btn-primary seletor" value="|<"/>
+              <input type="button"  class="btn btn-primary seletor" value="<<"/>
+              <input type="button"  class="btn btn-primary seletor" value=">>"/>
+              <input type="button"  class="btn btn-primary seletor" value=">|"/>
+            </div> 
+            <div class="imprimir">
+              <input type="button" class="btn btn-primary impr" value="Imprimir" />
+            </div>
+            <div class="botoes">
+              <input type="button" class="btn btn-primary opcao" value="Excluir"/>
+              <input type="button" class="btn btn-primary opcao" value="Editar"/>
+              <input type="button" class="btn btn-primary opcao" value="Selecionar"/>
+              <input type="button" class="btn btn-primary opcao" value="Novo"/>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+
+<!-- Cadastro Cliente -->
+
+
+
+    <div  class="collapse multi-collapse tamanhoOptCliente tamanhoOpt" id="cadCliente">
+      <div class="ajusteOpt">
+        <form class="formCliente">
+            <div class="cabecalio" draggable="true">
+              <span class="tituloPage">Cadastro de Clientes</span>
+              <input type="button" class="minimizar" id="minimizarCliente" value="–"/>
+              <input type="button" class="fechar" id="fecharCliente" value="X" /> 
+            </div>
+            <div class="formAll">
+              <div class="form-row">
+                <div class="form-group col-md-1">
+                  <label for="inputId">ID</label>
+                  <input type="text" class="form-control" id="inputId" placeholder="ID">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputNome">Nome</label>
+                  <input type="text" class="form-control" id="inputNome" placeholder="Nome">
+                </div>
+                <div class="form-group col-md-5">
+                  <label for="inputCpf">CPF/CNPJ</label>
+                  <input type="text" class="form-control" id="inputCpf" placeholder="CPF/CNPJ">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-5">
+                  <label for="longradouro">Longradouro</label>
+                  <input type="text" class="form-control" id="longradouro" placeholder="Endereço">
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="numero">Numero</label>
+                  <input type="text" class="form-control" id="numero" placeholder="Numero">
+                </div>
+                <div class="form-group col-md-5">
+                  <label for="bairro">Bairro</label>
+                  <input type="text" class="form-control" id="bairro" placeholder="Bairro">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-5">
+                  <label for="cidade">Cidade</label>
+                  <input type="text" class="form-control" id="cidade" placeholder="Cidade">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="estado">Estado</label>
+                  <select id="estado" class="form-control">
+                    <option selected>Selecione</option>
+                    <option>Acre - AC</option>
+                    <option>Alagoas - AL</option>
+                    <option>Amapá - AP</option>
+                    <option>Amazonas - AM</option>
+                    <option>Bahia - BA</option>
+                    <option>Ceará - CE</option>
+                    <option>Distrito Federal - DF</option>
+                    <option>Espírito Santo - ES</option>
+                    <option>Goiás - GO</option>
+                    <option>Maranhão - MA</option>
+                    <option>Mato Grosso - MT</option>
+                    <option>Mato Grosso do Sul - MS</option>
+                    <option>Minas Gerais - MG</option>
+                    <option>Pará - PA</option>
+                    <option>Paraíba - PB</option>
+                    <option>Paraná - PR</option>
+                    <option>Pernambuco - PE</option>
+                    <option>Piauí - PI</option>
+                    <option>Rio de Janeiro - RJ</option>
+                    <option>Rio Grande do Norte - RN</option>
+                    <option>Rio Grande do Sul - RS</option>
+                    <option>Rondônia - RO</option>
+                    <option>Roraima - RR</option>
+                    <option>Piauí - PI</option>
+                    <option>Santa Catarina - SC</option>
+                    <option>São Paulo - SP</option>
+                    <option>Sergipe - SE</option>
+                    <option>Tocantins - TO</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="cep">CEP</label>
+                  <input type="text" class="form-control" id="cep" placeholder="CEP">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="telefone">Telefone</label>
+                  <input type="text" class="form-control" id="telefone" placeholder="Telefone">
+                </div>
+                <div class="form-group col-md-5">
+                  <label for="email">E-mail</label>
+                  <input type="email" class="form-control" id="email" placeholder="E-mail">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="situacao">Situação</label>
+                  <input type="text" class="form-control" id="situacao" placeholder="Situação">
+                </div>
+              </div>
+              <div class="seletores"> 
+                <input type="button"  class="btn btn-primary seletor" value="|<"/>
+                <input type="button"  class="btn btn-primary seletor" value="<<"/>
+                <input type="button"  class="btn btn-primary seletor" value=">>"/>
+                <input type="button"  class="btn btn-primary seletor" value=">|"/>
+              </div> 
+              <div class="imprimir">
+                <input type="button" class="btn btn-primary impr" value="Imprimir" />
+              </div>
+              <div class="botoes">
+                <input type="button" class="btn btn-primary opcao" value="Excluir"/>
+                <input type="button" class="btn btn-primary opcao" value="Editar"/>
+                <input type="button" class="btn btn-primary opcao" value="Selecionar"/>
+                <input type="button" class="btn btn-primary opcao" value="Novo"/>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+
+
+<!-- Cadastro Usuários -->
+
+
+
+    <div  class="collapse multi-collapse tamanhoOpt tamanhoOptUsuario" id="cadUsuario">
+      <div class="ajusteOpt">
+        <form class="formUsuario">
+            <div class="cabecalio">
+              <span class="tituloPage">Cadastro de Usuários</span> 
+              <input type="button" class="minimizar" id="minimizarCliente" value="–" />
+              <input type="button" class="fechar" id="fecharUsuario" value="X"> 
+            </div>
+          <div class="formAll">
+            <div class="form-row">
+              <div class="form-group col-md-1">
+                <label for="inputId">ID</label>
+                <input type="text" class="form-control" id="inputId" placeholder="ID">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputNome">Nome</label>
+                <input type="text" class="form-control" id="inputNome" placeholder="Nome">
+              </div>
+              <div class="form-group col-md-5">
+                <label for="inputCpf">CPF</label>
+                <input type="text" class="form-control" id="inputCpf" placeholder="CPF">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <label for="longradouro">Longradouro</label>
+                <input type="text" class="form-control" id="longradouro" placeholder="Endereço">
+              </div>
+              <div class="form-group col-md-2">
+                <label for="numero">Numero</label>
+                <input type="text" class="form-control" id="numero" placeholder="Numero">
+              </div>
+              <div class="form-group col-md-5">
+                <label for="bairro">Bairro</label>
+                <input type="text" class="form-control" id="bairro" placeholder="Bairro">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <label for="cidade">Cidade</label>
+                <input type="text" class="form-control" id="cidade" placeholder="Cidade">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="estado">Estado</label>
+                <select id="estado" class="form-control">
+                  <option selected>Selecione</option>
+                  <option>Acre - AC</option>
+                  <option>Alagoas - AL</option>
+                  <option>Amapá - AP</option>
+                  <option>Amazonas - AM</option>
+                  <option>Bahia - BA</option>
+                  <option>Ceará - CE</option>
+                  <option>Distrito Federal - DF</option>
+                  <option>Espírito Santo - ES</option>
+                  <option>Goiás - GO</option>
+                  <option>Maranhão - MA</option>
+                  <option>Mato Grosso - MT</option>
+                  <option>Mato Grosso do Sul - MS</option>
+                  <option>Minas Gerais - MG</option>
+                  <option>Pará - PA</option>
+                  <option>Paraíba - PB</option>
+                  <option>Paraná - PR</option>
+                  <option>Pernambuco - PE</option>
+                  <option>Piauí - PI</option>
+                  <option>Rio de Janeiro - RJ</option>
+                  <option>Rio Grande do Norte - RN</option>
+                  <option>Rio Grande do Sul - RS</option>
+                  <option>Rondônia - RO</option>
+                  <option>Roraima - RR</option>
+                  <option>Piauí - PI</option>
+                  <option>Santa Catarina - SC</option>
+                  <option>São Paulo - SP</option>
+                  <option>Sergipe - SE</option>
+                  <option>Tocantins - TO</option>
+                </select>
+              </div>
+              <div class="form-group col-md-3">
+                <label for="cep">CEP</label>
+                <input type="text" class="form-control" id="cep" placeholder="CEP">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="funcao">Função</label>
+                <input type="text" class="form-control" id="funcao" placeholder="Função">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="dtContratacao">Data de Contratação</label>
+                <input type="date" class="form-control" id="dtContratacao" placeholder="Data de Contratação">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="dtDesligamento">Data de Desligamento</label>
+                <input type="date" class="form-control" id="dtDesligamento" placeholder="Data de Desligamento">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label for="telefone">Telefone</label>
+                <input type="text" class="form-control" id="telefone" placeholder="Telefone">
+              </div>
+              <div class="form-group col-md-5">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" placeholder="E-mail">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="situacao">Situação</label>
+                <input type="text" class="form-control" id="situacao" placeholder="Situação">
+              </div>
+            </div>
+            <div class="seletores"> 
+              <input type="button"  class="btn btn-primary seletor" value="|<"/>
+              <input type="button"  class="btn btn-primary seletor" value="<<"/>
+              <input type="button"  class="btn btn-primary seletor" value=">>"/>
+              <input type="button"  class="btn btn-primary seletor" value=">|"/>
+            </div> 
+            <div class="imprimir">
+              <input type="button" class="btn btn-primary impr" value="Imprimir" />
+            </div>
+            <div class="botoes">
+              <input type="button" class="btn btn-primary opcao" value="Excluir"/>
+              <input type="button" class="btn btn-primary opcao" value="Editar"/>
+              <input type="button" class="btn btn-primary opcao" value="Selecionar"/>
+              <input type="button" class="btn btn-primary opcao" value="Novo"/>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+
+    <!-- Cadastro Serviços -->
+    
+    
+    
+        <div  class="collapse multi-collapse tamanhoOptServico tamanhoOpt" id="cadServico">
+          <div class="ajusteOpt">
+            <form class="formServico">
+                <div class="cabecalio" draggable="true">
+                  <span class="tituloPage">Cadastro de Serviços</span>
+                  <input type="button" class="fechar" id="fecharServico" value="X"/>
+                </div>
+              <div class="formAll">
+                <div class="form-row">
+                  <div class="form-group col-md-1">
+                    <label for="inputId">ID</label>
+                    <input type="text" class="form-control" id="inputId" placeholder="ID">
+                  </div>
+                  <div class="form-group col-md-11">
+                    <label for="inputTitulo">Titulo</label>
+                    <input type="text" class="form-control" id="inputTitulo" placeholder="Titulo">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                    <label for="pzE">Prazo Estimado Para Entrega</label>
+                    <input type="text" class="form-control" id="pzE" placeholder="O prazo deve ser em dias">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="vlServico">Valor</label>
+                    <input type="text" class="form-control" id="vlServico" placeholder="Valor do serviço">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="contribuinteIcms">Situação</label>
+                    <input type="text" class="form-control" id="vlServico" placeholder="Valor">
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-12">
+                    <label for="observacoes">Observações</label>
+                    <textarea style="height: 90px;" class="form-control" id="observacoes" placeholder="Exemplo: Pintura de veiculos da cor preta possuem um acréscimo de 20% no valor"></textarea>
+                  </div>
+                </div>
+                <div class="seletores"> 
+                  <input type="button"  class="btn btn-primary seletor" value="|<"/>
+                  <input type="button"  class="btn btn-primary seletor" value="<<"/>
+                  <input type="button"  class="btn btn-primary seletor" value=">>"/>
+                  <input type="button"  class="btn btn-primary seletor" value=">|"/>
+                </div> 
+                <div class="imprimir">
+                  <input type="button" class="btn btn-primary impr" value="Imprimir" />
+                </div>
+                <div class="botoes">
+                  <input type="button" class="btn btn-primary opcao" value="Excluir"/>
+                  <input type="button" class="btn btn-primary opcao" value="Editar"/>
+                  <input type="button" class="btn btn-primary opcao" value="Selecionar"/>
+                  <input type="button" class="btn btn-primary opcao" value="Novo"/>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+
+
+
+    <!-- Cadastro Orçamentos -->
+    
+    
+    
+    <div  class="collapse multi-collapse tamanhoOptOrcamento tamanhoOpt" id="cadOrcamento">
+        <div class="ajusteOpt">
+          <form class="formOrcamento">
+              <div class="cabecalio" draggable="true">
+                <span class="tituloPage">Cadastro de Orçamentos</span>
+                <input type="button" class="fechar" id="fecharOrcamento" value="X"/>
+              </div>
+            <div class="formAll">
+              <div class="form-row">
+                <div class="form-group col-md-1">
+                  <label for="inputId">ID</label>
+                  <input type="text" class="form-control" id="inputId" placeholder="ID">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputAtendente">Atendente</label>
+                  <input type="text" class="form-control" id="inputAtendente" placeholder="Atendente">
+                </div>
+                <div class="form-group col-md-5">
+                  <label for="inputSituacao">Situação</label>
+                  <input type="text" class="form-control" id="inputSituacao" placeholder="Situação">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-8">
+                  <label for="inputCliente">Cliente</label>
+                  <input type="text" class="form-control" id="inputCliente" placeholder="Cliente">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputCpf">CPF</label>
+                  <input type="text" class="form-control" id="inputCpf" placeholder="CPF">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="optServico">Serviço</label>
+                  <select id="optServico" class="form-control">
+                    <option selected>Selecione</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="inputValor">Valor</label>
+                  <input type="text" class="form-control" id="inputValor" placeholder="Valor">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputDtInicio">Data de Inicio</label>
+                  <input type="date" class="form-control" id="inputDtInicio" placeholder="Data de Inicio">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputPvEntrega">Previsão de Entrega</label>
+                  <input type="date" class="form-control" id="inputPvEntrega" placeholder="Previsão de Entrega">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="observacoes">Observações</label>
+                  <textarea class="form-control" id="observacoes" placeholder="Exemplo: Pintura de veiculos da cor preta possuem um acréscimo de 20% no valor (Até 500 caractéres)."></textarea>
+                </div>
+              </div>
+              <div class="buttonOsDiv">
+                <input type="button"  class="btn btn-primary buttonOS" value="Gerar O.S"/>
+              </div>
+              <div class="seletores"> 
+                <input type="button"  class="btn btn-primary seletor" value="|<"/>
+                <input type="button"  class="btn btn-primary seletor" value="<<"/>
+                <input type="button"  class="btn btn-primary seletor" value=">>"/>
+                <input type="button"  class="btn btn-primary seletor" value=">|"/>
+              </div> 
+              <div class="imprimir">
+                <input type="button" class="btn btn-primary impr" value="Imprimir" />
+              </div>
+              <div class="botoes">
+                <input type="button" class="btn btn-primary opcao" value="Excluir"/>
+                <input type="button" class="btn btn-primary opcao" value="Editar"/>
+                <input type="button" class="btn btn-primary opcao" value="Selecionar"/>
+                <input type="button" class="btn btn-primary opcao" value="Novo"/>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+        
+
+
+
+    <!-- Cadastro O.S -->
+    
+    
+    
+    <div  class="collapse multi-collapse tamanhoOptOS tamanhoOpt" id="cadOS">
+        <div class="ajusteOpt">
+          <form class="formOS">
+              <div class="cabecalio" draggable="true">
+                <span class="tituloPage">Cadastro de Ordem de Serviço</span>
+                <input type="button" class="fechar" id="fecharOS" value="X"/>
+              </div>
+            <div class="formAll">
+              <div class="form-row">
+                <div class="form-group col-md-1">
+                  <label for="inputId">ID</label>
+                  <input type="text" class="form-control" id="inputId" placeholder="ID">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputAtendente">Atendente</label>
+                  <input type="text" class="form-control" id="inputAtendente" placeholder="Atendente">
+                </div>
+                <div class="form-group col-md-5">
+                  <label for="inputSituacao">Situação</label>
+                  <input type="text" class="form-control" id="inputSituacao" placeholder="Situação">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-8">
+                  <label for="inputCliente">Cliente</label>
+                  <input type="text" class="form-control" id="inputCliente" placeholder="Cliente">
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputCpf">CPF</label>
+                  <input type="text" class="form-control" id="inputCpf" placeholder="CPF">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="optServico">Serviço</label>
+                  <select id="optServico" class="form-control">
+                    <option selected>Selecione</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="inputValor">Valor</label>
+                  <input type="text" class="form-control" id="inputValor" placeholder="Valor">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputDtInicio">Data de Inicio</label>
+                  <input type="date" class="form-control" id="inputDtInicio" placeholder="Data de Inicio">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputPvEntrega">Previsão de Entrega</label>
+                  <input type="date" class="form-control" id="inputPvEntrega" placeholder="Previsão de Entrega">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="observacoes">Observações</label>
+                  <textarea class="form-control" id="observacoes" placeholder="Exemplo: Pintura de veiculos da cor preta possuem um acréscimo de 20% no valor (Até 500 caractéres)."></textarea>
+                </div>
+              </div>
+              <div class="buttonOsDiv">
+                <input type="button"  class="btn btn-primary buttonOS" value="Efetuar Pagamento"/>
+              </div>
+              <div class="seletores"> 
+                <input type="button"  class="btn btn-primary seletor" value="|<"/>
+                <input type="button"  class="btn btn-primary seletor" value="<<"/>
+                <input type="button"  class="btn btn-primary seletor" value=">>"/>
+                <input type="button"  class="btn btn-primary seletor" value=">|"/>
+              </div> 
+              <div class="imprimir">
+                <input type="button" class="btn btn-primary impr cancelar" value="Cancelar" />
+              </div>
+              <div class="botoes">
+                <input type="button" class="btn btn-primary opcao" value="Excluir"/>
+                <input type="button" class="btn btn-primary opcao" value="Editar"/>
+                <input type="button" class="btn btn-primary opcao" value="Selecionar"/>
+                <input type="button" class="btn btn-primary opcao" value="Novo"/>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  <footer class="version" >
+    <p> Versão 1.0.0.1</p>
+  </footer>
+
+  
+    
+</body>
+
+</html>
